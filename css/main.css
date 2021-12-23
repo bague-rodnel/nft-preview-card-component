@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap");
+
+:root {
+  --bs-gutter-x: 24px;
+
+  --clr-primary-soft-blue: hsl(215, 51%, 70%);
+  --clr-primary-cyan: hsl(178, 100%, 50%);
+  --clr-neutral-bg-dark-blue: hsl(217, 54%, 11%);
+  --clr-neutral-bg-grayish-blue: hsl(216, 50%, 16%);
+  --clr-neutral-hr-color: hsl(215, 32%, 27%);
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 600;
+
+  --body-bg-color: var(--clr-neutral-bg-dark-blue);
+  --text-color: var(--clr-primary-soft-blue);
+  --card-bg-color: var(--clr-neutral-bg-grayish-blue);
+  --heading-color: white;
+}
+
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--body-bg-color);
+  color: var(--text-color);
+
+  transition: 0.4s;
+
+  position: relative;
+}
+
+img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+svg path {
+  fill: currentColor;
+}
+
+#theme-button {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  cursor: pointer;
+}
+
+.center-content {
+  display: grid;
+  place-items: center;
+}
+
+/* ========== VARIABLES DARK THEME =========== */
+body.light-theme {
+  --body-bg-color: hsl(220, 18%, 93%);
+  --card-bg-color: white;
+  --text-color: var(--clr-neutral-hr-color);
+  --heading-color: var(--clr-neutral-bg-dark-blue);
+}
+
+.light-theme .card {
+  box-shadow: 0 0 5rem -3rem var(--clr-neutral-hr-color);
+}
+
+.light-theme .card__footer-creator {
+  font-weight: var(--fw-normal);
+}
+
+.light-theme .card__price {
+  color: var(--heading-color);
+}
+
+.light-theme .card__divider {
+  border-color: var(--clr-primary-soft-blue);
+}
+/* ========================== */
+
+.card {
+  background-color: var(--card-bg-color);
+  border-radius: 15px;
+  width: 327px;
+  height: 543px;
+  padding: 24px;
+  font-weight: var(--fw-light);
+
+  display: grid;
+  gap: 1rem;
+}
+
+.card__heading {
+  color: var(--heading-color);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}
+
+.card__heading:hover {
+  color: var(--clr-primary-cyan);
+}
+
+.card__img-box {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__img-box::after {
+  content: url(../images/icon-view.svg);
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: hsla(178, 100%, 50%, 0.6);
+  mix-blend-mode: screen;
+  transition: 0.5s ease;
+  opacity: 0;
+
+  display: grid;
+  place-items: center;
+}
+
+.card__img-box:hover::after {
+  opacity: 1;
+}
+
+.card__img-box img {
+  transition: transform 0.3s linear;
+}
+
+.card__img-box:hover img {
+  transform: scale(1.1);
+}
+
+.card__price {
+  color: var(--clr-primary-cyan);
+  font-weight: var(--fw-bold);
+}
+
+.card__price-icon,
+.card__time-icon {
+  margin-right: 0.5rem;
+}
+
+.card__price .card__price-icon {
+  transition: transform 2s ease-out;
+}
+.card__price:hover .card__price-icon {
+  transform: rotateY(720deg);
+}
+
+.card__time {
+  font-weight: var(--fw-normal);
+}
+
+.card__time .card__time-icon {
+  transition: transform 1s ease-in-out;
+}
+.card__time:hover .card__time-icon {
+  transform: rotate(720deg);
+}
+.card__divider {
+  border: 1px solid var(--clr-neutral-hr-color);
+  margin: 0;
+}
+
+.card__footer {
+  font-size: 0.92rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.card__footer-avatar {
+  overflow: hidden;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}
+
+.card__footer-avatar:hover + .card__footer-text .card__footer-creator {
+  color: var(--clr-primary-cyan);
+}
+
+.card__footer-text {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+.card__footer-creator {
+  font-style: normal;
+  color: var(--heading-color);
+  cursor: pointer;
+}
+
+.card__footer-creator:hover {
+  color: var(--clr-primary-cyan);
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: 350px;
+    height: 596px;
+  }
+}
